@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - next
-      - main
     paths:
       - 'packages/notification-center/**'
 
@@ -23,7 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Download the artifact
         uses: actions/download-artifact@master
         with:
           name: notification-center-web-component
@@ -33,7 +31,6 @@ jobs:
         uses: scopsy/actions-netlify@develop
         with:
           publish-dir: packages/notification-center/dist/umd
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: dev
           production-deploy: true
           alias: dev
